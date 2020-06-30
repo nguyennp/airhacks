@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 
 /**
  *
@@ -20,8 +21,11 @@ public class PingResource {
 
     @Inject
     @ConfigProperty(name = "message")
-    String message;    
+    String message;
+    
+    
 
+    @Timed
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Ping ping() {
@@ -32,6 +36,8 @@ public class PingResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void save(@Valid Ping ping) {
         System.out.println("--ping " + ping);
+
+
     }
 
 }

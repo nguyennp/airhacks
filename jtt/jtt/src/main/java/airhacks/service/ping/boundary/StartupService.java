@@ -3,14 +3,16 @@ package airhacks.service.ping.boundary;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.Initialized;
+import javax.enterprise.event.Observes;
 
-@Startup
-@Singleton
+
+@ApplicationScoped
 public class StartupService {
     
 
-    @PostConstruct
-    public void initOnStart() {
-        System.out.println("StartupService.initOnStart()");
+    public void initOnStart(@Observes @Initialized(ApplicationScoped.class) Object doesntMatter) {
+        System.out.println("CDI: StartupService.initOnStart()");
     }
 }

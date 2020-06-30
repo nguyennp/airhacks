@@ -1,6 +1,7 @@
 package airhacks.service.ping.boundary;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -29,7 +30,7 @@ public class PingResource {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void save(Ping ping) {
+    public void save(@Valid Ping ping) {
         System.out.println("--ping " + ping);
     }
 

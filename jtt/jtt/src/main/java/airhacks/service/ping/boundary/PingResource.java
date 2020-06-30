@@ -1,6 +1,7 @@
 package airhacks.service.ping.boundary;
 
 import javax.inject.Inject;
+import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -23,7 +24,7 @@ public class PingResource {
     @ConfigProperty(name = "message")
     String message;
     
-    
+
 
     @Timed
     @GET

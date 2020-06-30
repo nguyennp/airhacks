@@ -1,8 +1,13 @@
 package airhacks.service.ping.boundary;
 
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
@@ -17,8 +22,15 @@ public class PingResource {
     String message;    
 
     @GET
-    public String ping() {
-        return this.message + " Jakarta EE 8 with MicroProfile 3+!";
+    @Produces(MediaType.APPLICATION_JSON)
+    public Ping ping() {
+        return new Ping(13);
+    }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void save(Ping ping) {
+        System.out.println("--ping " + ping);
     }
 
 }
